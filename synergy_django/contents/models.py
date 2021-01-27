@@ -33,4 +33,4 @@ class Content(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.keyword
+        return self.title

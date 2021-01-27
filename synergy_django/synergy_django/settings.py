@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'rest_framework',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+'''
+When debug option is enabled(DEBUG=True), DO NOT forget to add urlpatterns as shown below:
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+'''
+
+SUMMERNOTE_THEME = 'bs4'
+
+## 어드민에서 Django-summernote를 쓸 때, 아래를 적어주지 않으면 
+X_FRAME_OPTIONS = 'ALLOWALL'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
+## Refused to display 'http://127.0.0.1:8000/summernote/editor/id_body/' in a frame because it set 'X-Frame-Options' to 'deny'.
+## 라는 에러가 뜬다! 
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
